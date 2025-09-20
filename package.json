@@ -1,0 +1,20 @@
+{
+  "name": "revisao-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["server","api","express","nodejs","dotenv",  "nodemon","monsters","school","monster high","api"],
+  "author": "Nicolly Santos",
+  "license": "MIT",
+  "description": "Api da Monster High o portal da escola para gerenciar os dados do universo Monster High de forma monstruosa e estilosa com o CRUD completo (Create, Read, Update, Delete)",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
