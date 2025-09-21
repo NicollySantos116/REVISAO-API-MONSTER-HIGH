@@ -9,3 +9,16 @@ router.delete("/:id", deleteMonster);
 router.put("/:id", updateMonster);
 
 export default router;
+
+
+//Rotas de monstros
+//Todos os monstros:
+//GET http://localhost:3000/monsters
+//Buscar tipo vampiros:
+//GET http://localhost:3000/monsters?tipo=Vampiro
+//Nome contendo “Draculaura”:
+//GET http://localhost:3000/monsters?nome=draculaura
+//Idade exata 1600:
+//GET http://localhost:3000/monsters?idade=1600
+//Combinando filtros:
+//GET http://localhost:3000/monsters?tipo=Vampiro&cor=rosa

@@ -6,6 +6,36 @@ const getAllMonsters = (req, res) => {
 
     // FILTROS AQUI
 
+   const { nome, tipo, cor, serie, idade } = req.query;
+
+    if (nome) {
+        resultado = resultado.filter(m =>
+            m.nome.toLowerCase().includes(nome.toLowerCase())
+        );
+    }
+
+    if (tipo) {
+        resultado = resultado.filter(m =>
+            m.tipo.toLowerCase() === tipo.toLowerCase()
+        );
+    }
+
+    if (cor) {
+        resultado = resultado.filter(m =>
+            m.cor.toLowerCase() === cor.toLowerCase()
+        );
+    }
+
+    if (serie) {
+        resultado = resultado.filter(m =>
+            m.serie.toLowerCase().includes(serie.toLowerCase())
+        );
+    }
+
+    if (idade) {
+        resultado = resultado.filter(m => m.idade === parseInt(idade));
+    }
+
     
     res.status(200).json({
         total: resultado.length,
