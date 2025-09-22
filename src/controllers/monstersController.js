@@ -109,19 +109,56 @@ const createMonster = (req, res) => {
 
 
     //Regras de negocio
+  
+    // Garante que o nome do monstro tenha no mínimo 3 caracteres
+    if (nome.length < 3) {
+        return res.status(400).json({
+            success: false,
+            message: "O nome deve conter no mínimo 3 caracteres"
+        });
+    }
+
+    // Impede nomes duplicados no sistema (case insensitive)
+    const nomeJaExiste = monsters.some(m => m.nome.toLowerCase() === nome.toLowerCase());
+    if (nomeJaExiste) {
+        return res.status(400).json({
+            success: false,
+            message: "Já existe um monstro com esse nome"
+        });
+    }
+
+    // Garante que a idade seja adequada para o universo Monster High (monstros antigos)
     if (idade < 1600) {
         return res.status(400).json({
             success: false,
-            message: "A idade deve ser superior ou igual 1600"
-        })
+            message: "A idade deve ser superior ou igual a 1600"
+        });
     }
 
+    // Garante que o tipo informado seja um dos válidos
     if (!tiposMonsterHigh.includes(tipo)) {
         return res.status(400).json({
             success: false,
             message: `O tipo "${tipo}" não é válido. Tipos permitidos: ${tiposMonsterHigh.join(", ")}.`
         });
     }
+
+    // Garante que a habilidade não seja muito longa
+    if (habilidade.length > 100) {
+        return res.status(400).json({
+            success: false,
+            message: "A habilidade deve ter no máximo 100 caracteres"
+        });
+    }
+
+    // Garante que a série esteja dentro dos valores válidos: 1, 2 ou 3
+    if (!seriesValidas.includes(Number(serie))) {
+        return res.status(400).json({
+            success: false,
+            message: "A série deve ser 1, 2 ou 3"
+        });
+    }
+
 
     //Criar a monster high
 
